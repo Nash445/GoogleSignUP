@@ -20,10 +20,9 @@ app.use(express.static('public'));
 app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/index.html');
 })
-
 app.set('view engine', 'ejs');
 
-app.get('/GoogleSignUP/login', (req,res)=>{
+app.get('/login', (req,res)=>{
     res.render('login');
 })
 
@@ -47,16 +46,16 @@ app.post('/login', (req,res)=>{
 
 })
 
-app.get('/GoogleSignUP/profile', checkAuthenticated, (req, res)=>{
+app.get('/profile', checkAuthenticated, (req, res)=>{
     let user = req.user;
     res.render('profile', {user});
 })
 
-app.get('/GoogleSignUP/protectedRoute', checkAuthenticated, (req,res)=>{
+app.get('/protectedRoute', checkAuthenticated, (req,res)=>{
     res.send('This route is protected')
 })
 
-app.get('/GoogleSignUP/logout', (req, res)=>{
+app.get('/logout', (req, res)=>{
     res.clearCookie('session-token');
     res.redirect('/login')
 
