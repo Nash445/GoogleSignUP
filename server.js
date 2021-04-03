@@ -13,14 +13,14 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 
-app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname + 'index.html');
+    res.sendFile(__dirname + '/index.html');
 })
+app.set('view engine', 'ejs');
 
 app.get('/login', (req,res)=>{
     res.render('login');
